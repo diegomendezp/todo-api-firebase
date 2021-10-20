@@ -1,7 +1,12 @@
 const express = require("express");
-const { signUp } = require("../controllers/auth.controller");
+const { signUp, loggedIn } = require("../controllers/auth.controller");
+const { validateToken } = require("../middlewares/tokenvalidation.middleware");
 const router = express.Router();
  
 router.post("/", signUp);
 
+router.get("/loggedin", validateToken, loggedIn)
+
 module.exports = router;
+
+// eyJhbGciOiJSUzI1NiIsImtpZCI6IjhmYmRmMjQxZTdjM2E2NTEzNTYwNmRkYzFmZWQyYzU1MjI2MzBhODciLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vdG9kby1hcHAtZmlyZWJhc2UtZTQzMjYiLCJhdWQiOiJ0b2RvLWFwcC1maXJlYmFzZS1lNDMyNiIsImF1dGhfdGltZSI6MTYzNDc0NjMxOCwidXNlcl9pZCI6IjQ0V1diSlhQMmRSRHh0NUdYdGlMbHI1bERkdjEiLCJzdWIiOiI0NFdXYkpYUDJkUkR4dDVHWHRpTGxyNWxEZHYxIiwiaWF0IjoxNjM0NzQ2MzE4LCJleHAiOjE2MzQ3NDk5MTgsImVtYWlsIjoiZGllZ29tZW4xNUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiZGllZ29tZW4xNUBnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.GI2u9EBngSqwiLFqz3rGizixqHnYyRoSoRbl-w4p9Ja5VgPY8pGyBNGg8AWKyU6m-OY_tEp17kVt_fn5cpxqxiugGfBzLg07gh2-NcX8YHx9lC2ChWfDthuNAgCC3F4dt0JUoCBB-wSC9ZjJ8_z4gahp41tJfYf7bGSDh2Af4BcHybWHSCQXO6_rrAowFaqQiXbGAuE41E2mxUvnfhsSZ0j0jrG8ydAt_PCkzG35ZJY1BZrrSSdOsO7y48UjI7_MVIGlECrU2EuimfsoW1vsNg1up5E6NDujTKk7hcMaV6OOEFvX9EpR6sTRYZuJksCcU_sVq3eivGLfGhfP_hRbgw

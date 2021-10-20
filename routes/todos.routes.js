@@ -1,8 +1,9 @@
 const express = require("express");
 const { getAllTodos, getTodo, createTodo, updateTodo, deleteTodo } = require("../controllers/todos.controller");
+const { validateToken } = require("../middlewares/tokenvalidation.middleware");
 const router = express.Router();
 
-router.get("/", getAllTodos);
+router.get("/", validateToken, getAllTodos);
 
 router.get("/:id", getTodo);
 
