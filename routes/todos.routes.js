@@ -3,7 +3,7 @@ const { getAllTodos, getTodo, createTodo, updateTodo, deleteTodo } = require("..
 const { validateToken } = require("../middlewares/tokenvalidation.middleware");
 const router = express.Router();
 
-router.get("/", validateToken, getAllTodos);
+router.get("/", getAllTodos);
 
 router.get("/:id", getTodo);
 
